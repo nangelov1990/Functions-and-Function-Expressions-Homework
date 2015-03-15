@@ -16,6 +16,10 @@ function printArgsInfo() {
 	document.getElementById("funcArgs").innerHTML += '<br>';
 };
 
+function printMessage(what, how){
+	return "<strong>- Using " + what + " " + how + " arguments</strong><br>";
+};
+
 var firstTest = [2, 3, 2.5, -110.5564, false];
 var secondTest = [2, 3, 2.5, -110.5564, false];
 var thirdTest = [2, 3, 2.5, -110.5564, false];
@@ -28,11 +32,11 @@ printArgsInfo([1, 2], ["string", "array"], ["single value"]);
 printArgsInfo("some string", [1, 2], ["string", "array"], ["mixed", 2, false, "array"], {name: "Peter", age: 20});
 printArgsInfo([[1, [2, [3, [4, 5]]]], ["string", "array"]]);
 
-document.getElementById("funcArgs").innerHTML += "<strong>- Using call() without arguments</strong><br>";
+document.getElementById("funcArgs").innerHTML += printMessage("call()", "without");
 printArgsInfo.call(null);
-document.getElementById("funcArgs").innerHTML += "<strong>- Using call() with arguments</strong><br>";
+document.getElementById("funcArgs").innerHTML += printMessage("call()", "with");
 printArgsInfo.call(null, 2, 3, 2.5, -110.5564, false);
-document.getElementById("funcArgs").innerHTML += "<strong>- Using apply() without arguments</strong><br>";
+document.getElementById("funcArgs").innerHTML += printMessage("apply()", "without");
 printArgsInfo.apply(null);
-document.getElementById("funcArgs").innerHTML += "<strong>- Using apply() with arguments</strong><br>";
+document.getElementById("funcArgs").innerHTML += printMessage("apply()", "with");
 printArgsInfo.apply(null, firstTest);
