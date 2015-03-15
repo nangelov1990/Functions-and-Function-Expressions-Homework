@@ -2,16 +2,14 @@
 
 function testContext() {
 	console.log(this);
+	return this;
 }
 
-document.getElementById("testValueOfThis1").innerHTML += "From the global scope => " + testContext() + '<br>';
-testContext.call(this);
+document.getElementById("testValueOfThis").innerHTML += "From the global scope => " + testContext.call(this) + '<br>';
 
 (function sampleFunction () {
-	var outputOfTestContext = testContext.call(this);
-	document.getElementById("testValueOfThis1").innerHTML += "Inside another function => " + outputOfTestContext + '<br>';
-	testContext();
+	document.getElementById("testValueOfThis").innerHTML += "Inside another function => " + testContext.call(this) + '<br>';
 })();
 
 var obj = new testContext();
-document.getElementById("testValueOfThis1").innerHTML += "As an object => " + obj + '<br>';
+document.getElementById("testValueOfThis").innerHTML += "As an object => " + obj + '<br>';
